@@ -153,7 +153,7 @@ let port_available addr port =
     let s = Lwt_unix.(socket PF_INET SOCK_STREAM 0) in
     lwt status = 
         try_lwt
-            Lwt_unix.(bind s (resolve_addr addr port));
+            ignore Lwt_unix.(bind s (resolve_addr addr port));
             Lwt.return true
         with _ ->
             Lwt.return false

@@ -76,7 +76,8 @@ let rec ws_zmq_comms verbose name socket uri (stream,push) =
     lwt _ = zmq_to_ws verbose name socket push <?> ws_to_zmq verbose name stream socket in
     ws_zmq_comms verbose name socket uri (stream,push)
 
-let ws_init verbose id req recv send = 
+let ws_init verbose cc =
+  let req, recv, send = Websocket_lwt.Connected_client.(http_request cc, (fun () -> recv cc), (fun fr -> send cc fr)) in
   let open Websocket_lwt in
   let open Kernel in
   try_lwt

@@ -20,7 +20,6 @@ depends: [
   "ctypes" {>= "0.3"}
   "ctypes-foreign"
   "iocaml-kernel" {= "0.4.8"}
-  "iocamljs-kernel" {= "0.4.8"}
   "ocamlbuild" {build}
 ]
 available: [ ocaml-version >= "4.02.0"  ]
